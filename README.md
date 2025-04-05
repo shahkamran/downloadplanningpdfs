@@ -58,11 +58,23 @@ This project contains a script to download documents from local council public a
    # Sequential mode (default)
    python downloader.py
    
-   # Parallel mode
+   # Parallel mode (recommended for speed)
    python downloader.py --parallel
    
    # Parallel mode with custom number of workers
-   python downloader.py --parallel --workers 5
+   python downloader.py --parallel --workers 20
+   
+   # Process documents in batches
+   python downloader.py --parallel --batch 100
+   
+   # Process specific range of documents
+   python downloader.py --parallel --start 200 --end 300
+   
+   # Disable document caching
+   python downloader.py --parallel --no-cache
+   
+   # Enable debug logging
+   python downloader.py --parallel --debug
    ```
 
 3. **Find your downloaded files** in the `downloaded-pdfs` directory (configurable in `config.py`)
@@ -84,6 +96,15 @@ All configuration options are available in `config.py`:
 - `REQUEST_DELAY` - Delay between requests (to be respectful to the server)
 - `MAX_WORKERS` - Maximum number of concurrent downloads in parallel mode
 - `DOCUMENT_TYPE_FILTER` - The type of documents to download (e.g., "Planning Comments")
+
+### Performance Settings
+
+- `USE_CACHE` - Enable/disable document data caching (default: True)
+- `CACHE_FILE` - Name of the cache file (default: "document_cache.json")
+- `CACHE_EXPIRY` - Cache expiry time in seconds (default: 3600)
+- `CONNECTION_TIMEOUT` - Connection timeout in seconds (default: 30)
+- `RETRY_ATTEMPTS` - Number of retry attempts for failed downloads (default: 3)
+- `BATCH_SIZE` - Number of documents to process in one batch (default: 0 for all)
 
 ## How It Works
 

@@ -12,9 +12,18 @@ START_URL = "https://publicaccess.yourcouncil.gov.uk/PublicAccess_LIVE/SearchRes
 
 # Download settings
 DOWNLOAD_DIR = "downloaded-pdfs"  # Relative to script location
-REQUEST_DELAY = 1  # Delay between requests (seconds)
-MAX_WORKERS = 10  # Maximum number of concurrent downloads (for parallel version)
+REQUEST_DELAY = 0.5  # Delay between requests (seconds)
+MAX_WORKERS = 20  # Maximum number of concurrent downloads (for parallel version)
 DOCUMENT_TYPE_FILTER = "Planning Comments"  # Type of documents to download
+
+# Performance settings
+USE_CACHE = True  # Enable document data caching
+CACHE_FILE = "document_cache.json"  # Cache file name
+CACHE_EXPIRY = 3600  # Cache expiry in seconds (1 hour)
+CONNECTION_TIMEOUT = 30  # Connection timeout in seconds
+RETRY_ATTEMPTS = 3  # Number of retry attempts for failed downloads
+BATCH_SIZE = 100  # Number of documents to process in one batch (0 for all)
+
 
 # HTTP request headers
 HEADERS = {

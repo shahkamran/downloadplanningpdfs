@@ -159,4 +159,3 @@ The project includes a `.gitignore` file that excludes:
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-# downloadplanningpdfs
